@@ -1,9 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(sbtStashOnFailure, None, None)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(sbtMapExec b168a6a1-858e-43af-80cb-2fe26aa9ad3e __72f244c9-a73e-44b4-a377-7183eb68f0d4, None, None)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(exit, Some(__72f244c9-a73e-44b4-a377-7183eb68f0d4), Some(CommandSource(network-9)))[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(__disconnectNetworkChannel network-9, None, Some(CommandSource(network-9)))[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(sbtCompleteExec b168a6a1-858e-43af-80cb-2fe26aa9ad3e, None, None)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(resumeFromFailure, None, None)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(sbtPopOnFailure, None, None)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(sbtReportResult b168a6a1-858e-43af-80cb-2fe26aa9ad3e, Some(b168a6a1-858e-43af-80cb-2fe26aa9ad3e), Some(CommandSource(network-9)))[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
