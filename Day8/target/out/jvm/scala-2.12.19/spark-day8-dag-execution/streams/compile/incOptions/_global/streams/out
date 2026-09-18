@@ -1,0 +1,10 @@
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /home/hitesh/30-days-daily-task-/Day8/target/out/jvm/scala-2.12.19/spark-day8-dag-execution/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /home/hitesh/30-days-daily-task-/Day8/target/out/jvm/scala-2.12.19/spark-day8-dag-execution/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Day8DAGExecution.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Day8DAGExecution$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /home/hitesh/30-days-daily-task-/Day8/target/out/jvm/scala-2.12.19/spark-day8-dag-execution/classes.bak[0m
