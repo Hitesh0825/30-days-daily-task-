@@ -61,6 +61,7 @@ val broadcastProducts = sc.broadcast(productMaster)
 Executors access the broadcast data using:
 
 broadcastProducts.value
+
 🔹 Why Use Broadcast Variables?
 Broadcast variables are useful when:
 
@@ -75,6 +76,7 @@ Distributed records need to be validated against a small master/reference table.
 In this project, the product master table is small and read-only, making it suitable for broadcasting.
 
 🔹 Broadcast Processing Flow
+
                  DRIVER
                    |
                    |
@@ -96,7 +98,9 @@ In this project, the product master table is small and read-only, making it suit
           |                |
           v                v
    Product Name      Accumulator +1
+   
 🔹 Master Product Table
+
 The application uses the following product reference table:
 
 Product ID	Product
@@ -107,6 +111,7 @@ P004	Monitor
 This table acts as the master data used to validate incoming transactions.
 
 🔹 Transaction Dataset
+
 The application processes these transactions:
 
 T001 -> P001 -> Quantity 2
@@ -126,7 +131,9 @@ Therefore:
 
 P999 -> Invalid
 P888 -> Invalid
+
 🔹 Accumulators
+
 An Accumulator is a Spark variable designed for aggregating information from distributed tasks.
 
 Accumulators are commonly useful for counters such as:
@@ -148,7 +155,9 @@ badRecords.add(1)
 The final value is read using:
 
 badRecords.value
+
 🔹 Transaction Validation
+
 Each transaction is checked against the broadcast product master.
 
 The validation flow is:
@@ -172,7 +181,9 @@ Check Broadcast Product Map
      |
      v
 Product Name
+
 🔹 Validation Results
+
 The successfully executed application produced:
 
 T001 -> VALID | P001 -> Laptop | Quantity: 2
@@ -185,7 +196,9 @@ T007 -> INVALID | Unknown Product ID: P888
 The final number of invalid records was:
 
 Total bad records: 2
+
 🔹 Driver Variables vs Accumulators
+
 A normal driver-side variable should not be used as a distributed counter.
 
 Spark executors run tasks independently. Changes to ordinary driver variables inside distributed task execution are not a reliable mechanism for collecting updates back to the driver.
@@ -213,6 +226,7 @@ Accumulator
 Accumulators provide the appropriate mechanism for task-side counter updates.
 
 🔹 Why Accumulators Are Used
+
 In this project, the accumulator counts invalid transaction records.
 
 Whenever a transaction contains an unknown product ID:
@@ -224,7 +238,9 @@ badRecords.value
 The final result is:
 
 Total bad records: 2
+
 🔹 Combining Broadcast Data with RDD Processing
+
 The main workflow combines a broadcast variable with RDD processing:
 
 Small Product Master
@@ -252,6 +268,7 @@ Product Name
 This allows distributed transaction data to be validated using a small reference dataset.
 
 🔹 Practical Scenario
+
 Transaction Validation Against a Master Table
 Imagine a company receives a large number of transaction records.
 
@@ -278,6 +295,7 @@ Count invalid transactions.
 Spark can broadcast the small product master table and process the transaction RDD across executors.
 
 🔹 Spark Components Used
+
 Component	Purpose
 SparkSession	Creates the Spark application
 SparkContext	Provides access to Spark functionality
@@ -289,7 +307,9 @@ add()	Increments the accumulator
 value	Reads the accumulator result
 map()	Performs transaction validation
 collect()	Retrieves final results
+
 🔹 Important Code Sections
+
 Creating the Broadcast Variable
 val broadcastProducts = sc.broadcast(productMaster)
 Accessing Broadcast Data
@@ -300,7 +320,9 @@ Updating the Accumulator
 badRecords.add(1)
 Reading the Final Value
 badRecords.value
+
 🔹 Complete Processing Flow
+
                 Spark Driver
                      |
         +------------+------------+
@@ -327,7 +349,9 @@ Product    Accumulator
         |
         v
    Final Results
+   
 🛠️ Technologies Used
+
 Technology	Version / Purpose
 Scala	2.12.19
 Apache Spark	3.5.3
@@ -336,6 +360,7 @@ Spark SQL	Spark application dependency
 sbt	2.0.8
 Java	17.0.20.1
 Ubuntu	WSL2 environment
+
 📁 Project Structure
 Day11/
 ├── README.md
@@ -346,6 +371,7 @@ Day11/
     └── main/
         └── scala/
             └── Day11BroadcastAccumulator.scala
+            
 ▶️ How to Run
 Step 1 — Navigate to the project
 cd ~/30-days-daily-task-/Day11
@@ -354,7 +380,9 @@ sbt run
 The application runs Spark in local mode:
 
 .master("local[*]")
+
 📊 Expected Output
+
 The application displays the master product table:
 
 ===== MASTER PRODUCT TABLE =====
@@ -377,6 +405,7 @@ The final accumulator result is:
 Total bad records: 2
 
 🧠 Key Learnings
+
 After completing Day 11, the following concepts were demonstrated:
 
 Broadcast variables efficiently distribute small read-only reference data.
@@ -398,6 +427,7 @@ Broadcast variables and accumulators solve different distributed-processing prob
 Transaction validation can combine both concepts in a practical Spark workflow.
 
 📌 Day 11 Summary
+
 The project implemented a complete transaction-validation workflow using Spark RDDs.
 
 Product Master
@@ -423,6 +453,7 @@ Bad Record Count
 The application successfully validated transactions against a small broadcast product master table and used an accumulator to count invalid records.
 
 🏁 Conclusion
+
 Day 11 provided practical experience with two important Spark distributed-programming features: Broadcast Variables and Accumulators.
 
 The project demonstrated how a small product master table can be broadcast to executors and reused during distributed RDD processing. It also demonstrated how an accumulator can count invalid transaction records across distributed tasks.
