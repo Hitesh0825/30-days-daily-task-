@@ -1,5 +1,7 @@
 Day 11 — Broadcast and Accumulators
+
 📌 Objective
+
 The objective of Day 11 is to understand Broadcast Variables and Accumulators in Apache Spark and apply them in a practical transaction-validation scenario.
 
 This project demonstrates:
